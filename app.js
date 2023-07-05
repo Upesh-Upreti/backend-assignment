@@ -17,6 +17,8 @@ app.get('/', (req, res) => {
 
 //routes
 app.use('/api/v1/auth', require('./routes/auth'));
+app.use('/api/v1/user', require('./routes/users'));
+app.use('/api/v1/admin', require('./routes/admin'));
 
 app.listen(process.env.PORT || 3000, (req, res) => {
     console.log(`Server is running on port ${process.env.PORT}`);

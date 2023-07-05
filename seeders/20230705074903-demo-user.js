@@ -23,6 +23,7 @@ module.exports = {
       email: 'rambdr@gmail.com',
       password: bcrypt.hashSync('rambdr@123', 10),
       address: 'Teku',
+      role: 'user',
       phoneNumber: '9861584727',
       createdAt: new Date(),
       updatedAt: new Date()
