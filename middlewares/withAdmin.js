@@ -9,7 +9,7 @@ const withAdmin = async (req, res, next) => {
         const user = await User.findOne({ where: { id } });
         if (user.role === 'admin' || user.role === "superAdmin")
             return next();
-        else res.status(StatusCodes.UNAUTHORIZED).json(ReasonPhrases.UNAUTHORIZED);
+        else res.status(StatusCodes.UNAUTHORIZED).json({ 'message': 'You are not an admin.' });
     } catch (error) {
         return res.status(StatusCodes.INTERNAL_SERVER_ERROR).json(ReasonPhrases.INTERNAL_SERVER_ERROR);
     }

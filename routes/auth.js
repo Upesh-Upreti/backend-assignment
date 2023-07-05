@@ -1,7 +1,7 @@
 const router = require('express').Router();
 const authController = require('../controllers/auth/');
 const validateRequestSchema = require('../middlewares/validateRequestSchema');
-const userSchema = require('../schemas/atuhSchema');
+const userSchema = require('../schemas/authSchema');
 
 router.post('/login', userSchema.logInSchema, validateRequestSchema, authController.postLogin);
 
