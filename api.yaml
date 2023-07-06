@@ -27,31 +27,41 @@ components:
       in: header       # can be "header", "query" or "cookie"
       name: apikey
       
-# paths:
-#   /api/v1/products:
-#     get:
-#       tags:
-#           - Products API
-#       security:
-#        - ApiTokenss: []
-#        - ApiKey: []
-#       summary: Returns a List of products.
-#       parameters:
-#         - name: userId
-#           in: path
-#           required: true
-#           description: Parameter description in CommonMark or HTML.
-#           schema:
-#             # type : integer
-#             # format: int64
-#             type: string
-#             example: "Users String"
-#             minimum: 1
-#       responses: 
-#         '200':
-#           description: OK
-
 paths:
+  /auth/signup:
+        post:
+          tags:
+            - Auth API
+          summary: to register as a new user 
+          requestBody:
+            content:
+              application/json:
+                schema:      # Request body contents
+                  type: object
+                  properties:
+                    email:
+                      type: string
+                    password:
+                      type: string
+                    firstName:
+                      type: string
+                    lastName:
+                      type: string
+                    address:
+                      type: string
+                    phoneNumber:
+                      type: string
+                  example:   # Sample object
+                    email: daribdr@gmail.com
+                    password : rambdr@123
+                    firstName: Ram Bahadur
+                    lastName : Khadka
+                    address: Teku
+                    phoneNumber : 9861584727
+          responses:
+            201:
+              description: Created
+
   /auth/login:
     post:
       tags:
@@ -60,82 +70,40 @@ paths:
       requestBody:
         content:
           application/json:
-            schema:
+            schema:      # Request body contents
               type: object
               properties:
                 email:
                   type: string
                 password:
                   type: string
-      responses:
-        201:
-          description: Created
- 
-    post:
-      tags:
-        - Auth API
-      summary: Login 
-      requestBody:
-        content:
-          application/json:
-            schema:
-              type: object
-              properties:
-                email:
-                  type: string
-                password:
-                  type: string
+              example:   # Sample object
+                email: haribdr@gmail.com
+                password : rambdr@123
+                
       responses:
         201:
           description: Created
 
-  # paths:
-  # /users/list:
-  #   post:
-  #     tags:
-  #       - User List API 
-  #     summary: Returns a user list. 
-  #     description: <b> Request :- </b> <br /> <br />
-  #             <b> page_no* </b>  is required <br /> 
-  #             <b> status* </b>  is required <br /> 
-  #             <b> type* </b>  is required <br /> 
-
-  #     parameters:
-  #       - in: query
-  #         name: month_year
-  #         schema:
-  #           #type: integer
-  #           example: 2022-10        
-  #     post:
-  #     requestBody:
-  #       required: true
-  #       content:
-  #         multipart/form-data:
-  #          #application/json:
-  #           schema:
-  #             type: object
-  #             properties: 
-  #               page_no:         
-  #                 type: integer
-  #                 example: 1  
-  #               type:       
-  #                 type: string
-  #                 example: "A" 
-  #               status:
-  #                 type: integer
-  #                 example: 0
-  #               fileName:
-  #                 type: string 
-  #                 format: binary
-         
-  #     responses:
-  #       '200':
-  #         description: A user object. 
-  #       '400':
-  #         description: The specified user ID is invalid (not a number).
-  #       '404':
-  #         description: A user with the specified ID was not found.
-  #       default:
-  #         description: Unexpected error
-  
-  
+  /products/:
+        get:
+          tags:
+            - Products API
+          summary: to get all products
+          responses:
+            201:
+              description: 
+  /products/{productId}:
+        get:
+          tags:
+            - Products API
+          summary: to get all products
+          parameters:
+            - in: path
+              name: productId
+              schema:
+                type: string
+              required: true
+          responses:
+            201:
+              description: 
