@@ -1,6 +1,9 @@
 const express = require('express');
 const cors = require('cors');
 const sequelize = require('./utils/database');
+
+const { swaggerServe, swaggerSetup } = require('./swaggerConfig');
+
 require('dotenv').config();
 
 const app = express();
@@ -20,6 +23,8 @@ app.use('/api/v1/auth', require('./routes/auth'));
 app.use('/api/v1/user', require('./routes/users'));
 app.use('/api/v1/admin', require('./routes/admin'));
 app.use('/api/v1/products', require('./routes/products'));
+app.use('/api/v1/cart', require('./routes/cart'));
+app.use("/api-docs", swaggerServe, swaggerSetup);
 
 app.listen(process.env.PORT || 3000, (req, res) => {
     console.log(`Server is running on port ${process.env.PORT}`);

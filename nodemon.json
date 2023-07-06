@@ -1,0 +1,10 @@
+{
+    "watch": [
+        "api.yaml",
+        "**/*"
+    ],
+    "ext": [
+        "node_modules/",
+        "yarn.lock"
+    ]
+}

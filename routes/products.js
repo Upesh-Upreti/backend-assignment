@@ -10,7 +10,7 @@ const validateRequestSchema = require('../middlewares/validateRequestSchema');
 router.get('/', withPagination, productController.getAllProducts);
 router.get('/:id', productController.getProductById);
 router.patch('/:id', withAuth, withAdmin, productController.updateProductById);
-router.delete('/:id', withAuth, withAdmin, productController.deleteProdutById);
+router.delete('/:id', withAuth, withAdmin, productController.deleteProductById);
 router.post('/create', withAuth, withAdmin, createProduct, validateRequestSchema, productController.postCreateProduct);
 
 module.exports = router;

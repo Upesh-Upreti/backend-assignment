@@ -69,7 +69,7 @@ const getProductById = async (req, res) => {
     }
 }
 
-const deleteProdutById = async (req, res) => {
+const deleteProductById = async (req, res) => {
     const id = req.params.id;
     try {
         const product = await Product.destroy({ where: { id } });
@@ -119,6 +119,6 @@ module.exports = {
     postCreateProduct,
     getAllProducts,
     getProductById,
-    deleteProdutById,
+    deleteProductById,
     updateProductById,
 }
