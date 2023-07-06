@@ -11,6 +11,7 @@ module.exports = (sequelize, DataTypes) => {
      */
     static associate(models) {
       models.User.hasMany(models.CartItem, { foreignKey: 'userId', onDelete: 'CASCADE' });
+      models.User.hasMany(models.OrderItem, { foreignKey: 'userId', onDelete: 'CASCADE' });
     }
   }
   User.init({

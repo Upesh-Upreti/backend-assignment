@@ -29,7 +29,6 @@ const getAllCartItem = async (req, res) => {
     const { page, limit, offset } = req.query;
     const userId = req.body.id;
 
-
     try {
         const totalCartItems = await CartItem.count();
         const cartItems = await User.findOne({
